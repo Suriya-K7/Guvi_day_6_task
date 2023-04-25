@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 06 - task</title>
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+  <body>
+    <header>Day six - Task (by - Udhayasooriyan)</header>
+    <nav>
+      <a href="#mov">Class - Movie</a>
+      <a href="#circle">Class - Circle</a>
+      <a href="#person">Class - Person</a>
+      <a href="#uber">Class - Uber</a>
+    </nav>
+    <div class="wrapper" id="mov">
+      <h1>Class - Movie</h1>
+      <hr />
+      <p class="intend">
+        The class Movie is stated below. An instance of class Movie represents a
+        film. This class has the following three properties:
+      </p>
+      <ul>
+        <li>title, which is a String representing the title of the movie</li>
+        <li>
+          studio, which is a String representing the studio that made the movie
+        </li>
+        <li>
+          rating, which is a String representing the rating of the movie (i.e.
+          PG­13, R, etc)
+        </li>
+      </ul>
+      <ol type="A">
+        <li>
+          Write a constructor for the class Movie, which takes a String
+          representing the title of the movie, a String representing the studio,
+          and a String representing the rating as its arguments, and sets the
+          respective class properties to these values.
+        </li>
+        <li>
+          The constructor for the class Movie will set the class property rating
+          to "PG" as default when no rating is provided.
+        </li>
+        <li>
+          Write a method getPG, which takes an array of base type Movie as its
+          argument, and returns a new array of only those movies in the input
+          array with a rating of "PG". You may assume the input array is full of
+          Movie instances. The returned array need not be full.
+        </li>
+        <li>
+          Write a piece of code that creates an instance of the class Movie with
+          the title “Casino Royale”, the studio “Eon Productions”, and the
+          rating “PG­13”
+        </li>
+      </ol>
+      <h3>Code shown below</h3>
+      <code>
+        <pre>
+
+    class Movie {
+      constructor(title, studio, rating = "PG") {
+        this.title = title;
+        this.studio = studio;
+        this.rating = rating;
+      }
+      getPG(movies) {
+        return movies.filter(movie => movie.rating == "PG");
+      }
+    }
+    let casinoRoyale = new Movie("Casino Royale","Eon Productions", "PG-13");
+    console.log(casinoRoyale); // Movie { titl'Casino Royale',  studio: 'Eon Productions'rating: 'PG-13' }
+
+    casinoRoyale = new Movie("Casino Royale", "Eon Productions");
+    console.log(casinoRoyale); // Movie { titl'Casino Royale',  studio: 'Eon Productions'rating: 'PG' }
+     If there is no rating details then it will take PG as default value
+        </pre>
+      </code>
+      <i
+        >note : above code already executed in these same page check in
+        Console.log</i
+      >
+    </div>
+    <div class="wrapper" id="circle">
+      <h1>Class - Circle</h1>
+      <hr />
+      <h3>Code shown below</h3>
+      <code>
+        <pre>
+    class Circle {
+      constructor(radius=1,color="red") {
+        this.radius = radius;
+        this.color = color;
+      }
+      get Radius(){
+          return this.radius;
+      }
+      get Color(){
+          return this.color;
+      }
+      get Diameter(){
+          return (this.radius * 2)
+      }
+      set Diameter(diameter){
+          this.radius = diameter/2;
+      }
+      get Area(){
+          return (Math.PI*Math.pow(this.radius,2).toFixed(2));
+      }
+      get Circumference(){
+          return (2 * Math.PI * this.radius).toFixed(2);
+      }
+      get toString(){
+          return `Circle[radius=${this.radius},color=${this.color}]`
+      }
+    }
+          
+    let circle = new Circle(4);
+    console.log("area of circle using radius");
+    console.log(circle.Area);
+    console.log("area of circle using diameter by using setter method");
+    circle.Diameter = 4;
+    console.log(circle.Area);
+        </pre>
+      </code>
+      <i>
+        note : above code already executed in these same page check in
+        Console.log
+      </i>
+    </div>
+    <div class="wrapper" id="person">
+      <h1>Class - Person</h1>
+      <hr />
+      <h3>Code shown below</h3>
+      <code>
+        <pre>
+    class Person {
+      constructor(firstName, lastName, age, email, company) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+        this.company = company;
+      }
+          
+      details() {
+        return `${this.firstName} ${this.lastName} is ${this.age} years old,
+    and he is working in ${this.company}. for moinformation contact him '${this.email}'`
+      }
+    }
+    let suriya = new Person("Udhayasooriyan","kesavamurthy",28,"usraising@gmail.com","GUVI");
+    console.log(suriya.details());
+    //output Udhayasooriyan kesavamurthy is 28 years old,
+    and he is working in GUVI. for more information contact him 'usraising@gmail.com'
+        </pre>
+      </code>
+      <i
+        >note : above code already executed in these same page check in
+        Console.log</i
+      >
+    </div>
+    <div class="wrapper" id="uber">
+      <h1>Class - Uber</h1>
+      <hr />
+      <h3>Code shown below</h3>
+      <code>
+        <pre>
+          
+    class Uber {
+      constructor(name, from, to, distance,carType='UberXL') {
+        this.name = name;
+        this.from = from;
+        this.to = to;
+        this.distance = distance;
+        this.carType = carType;
+      }         
+      fare() {
+          let rate=0;
+          if(this.carType=='UberXL'){
+              rate=5;
+          }else if(this.carType=='Uber Comfort'){
+              rate=10;
+          }else if(this.carType=='Uber Black'){
+              rate=15;
+          }else if(this.carType=='Uber SUV'){
+              rate=20;
+          }else if(this.carType=='Uber WAV'){
+              rate=25;
+          }
+          let fare=this.distance*rate;   
+        return `${this.name} booked Uber in car type ${this.carType} from ${this.from} - to ${this.to}.
+        total distance for this ride is ${this.distance} KM & fare for this ride is ${fare} Rupees.`
+      }
+    }
+    let suriyaRide = new Uber("suriya", "tambaram","CMBT",25,"Uber Comfort");
+    console.log(suriyaRide.fare());
+
+    //output suriya booked Uber in car type Uber Comfort from tambaram - to CMBT.
+    total distance for this ride is 25 KM & fare for this ride is 250 Rupees.
+    
+    suriyaRide = new Uber("suriya", "tambaram","CMBT",20);
+    console.log(suriyaRide.fare());
+
+    //output suriya booked Uber in car type UberXL from tambaram - to CMBT.
+    total distance for this ride is 20 KM & fare for this ride is 100 Rupees.
+          
+        </pre>
+      </code>
+      <i>
+        note : above code already executed in these same page check in
+        Console.log
+      </i>
+    </div>
+    <script>
+      //class for Movie
+      class Movie {
+        constructor(title, studio, rating = "PG") {
+          this.title = title;
+          this.studio = studio;
+          this.rating = rating;
+        }
+        getPG(movies) {
+          return movies.filter((movie) => movie.rating === "PG");
+        }
+      }
+      let casinoRoyale = new Movie("Casino Royale", "Eon Productions", "PG-13");
+      console.log("with PG rating");
+      console.log(casinoRoyale);
+      casinoRoyale = new Movie("Casino Royale", "Eon Productions");
+      console.log("without PG rating");
+      console.log(casinoRoyale);
+
+      //class for person
+      class Circle {
+        constructor(radius = 1, color = "red") {
+          this.radius = radius;
+          this.color = color;
+        }
+        get Radius() {
+          return this.radius;
+        }
+        get Color() {
+          return this.color;
+        }
+        get Diameter() {
+          return this.radius * 2;
+        }
+        set Diameter(diameter) {
+          this.radius = diameter / 2;
+        }
+        get Area() {
+          return (Math.PI * Math.pow(this.radius, 2)).toFixed(2);
+        }
+        get Circumference() {
+          return (2 * Math.PI * this.radius).toFixed(2);
+        }
+        get toString() {
+          return `Circle[radius=${this.radius},color=${this.color}]`;
+        }
+      }
+      let circle = new Circle(4);
+      console.log("area of circle using radius");
+      console.log(circle.Area);
+      console.log("area of circle using diameter by using setter method");
+      circle.Diameter = 4;
+      console.log(circle.Area);
+
+      //class for person
+      class Person {
+        constructor(firstName, lastName, age, email, company) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+          this.age = age;
+          this.email = email;
+          this.company = company;
+        }
+        details() {
+          return `${this.firstName} ${this.lastName} is ${this.age} years old,
+and he is working in ${this.company}. for more information contact him '${this.email}'`;
+        }
+      }
+      let suriya = new Person(
+        "Udhayasooriyan",
+        "kesavamurthy",
+        28,
+        "usraising@gmail.com",
+        "GUVI"
+      );
+      console.log("created using Person class");
+      console.log(suriya.details());
+
+      //class for Uber
+      class Uber {
+        constructor(name, from, to, distance, carType = "UberXL") {
+          this.name = name;
+          this.from = from;
+          this.to = to;
+          this.distance = distance;
+          this.carType = carType;
+        }
+        fare() {
+          let rate = 0;
+          let fare = 0;
+          if (this.carType == "UberXL") {
+            rate = 5;
+          } else if (this.carType == "Uber Comfort") {
+            rate = 10;
+          } else if (this.carType == "Uber Black") {
+            rate = 15;
+          } else if (this.carType == "Uber SUV") {
+            rate = 20;
+          } else if (this.carType == "Uber WAV") {
+            rate = 25;
+          }
+          fare = this.distance * rate;
+          return `${this.name} booked Uber in car type ${this.carType} from ${this.from} - to ${this.to}.
+    total distance for this ride is ${this.distance}KM & fare for this ride is ${fare} Rupees`;
+        }
+      }
+      let suriyaRide = new Uber(
+        "suriya",
+        "tambaram",
+        "CMBT",
+        25,
+        "Uber Comfort"
+      );
+      console.log("created using Uber class with all value");
+      console.log(suriyaRide.fare());
+      suriyaRide = new Uber("suriya", "tambaram", "CMBT", 20);
+      console.log("created using Uber class with default");
+      console.log(suriyaRide.fare());
+    </script>
+  </body>
+</html>
